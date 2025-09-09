@@ -1,167 +1,207 @@
 package ua.opnu;
 
-public class Main {
-    public static void main(String[] args) {
+/**
+ * Головний клас для демонстрації різних методів.
+ */
+public final class Main {
+
+    /**
+     * Головний метод програми.
+     *
+     * @param args аргументи командного рядка
+     */
+    public static void main(final String[] args) {
         System.out.println("Hello world!");
     }
 
     // ======== Logical operations ========
 
     /**
-     * Given two temperatures, return true if one is less than 0 and the other is greater than 100.
-     * Example:
-     * icyHot(120, -1) → true
-     * icyHot(-1, 120) → true
-     * icyHot(2, 120) → false
+     * Перевіряє, чи одна температура нижче 0, а інша вище 100.
+     *
+     * @param temp1 перша температура
+     * @param temp2 друга температура
+     * @return true, якщо одна температура нижче 0, а інша вище 100
      */
-    public boolean icyHot(int temp1, int temp2) {
-        // TODO: write method body
-        return false;
+    public boolean icyHot(final int temp1, final int temp2) {
+        final int freezingPoint = 0;
+        final int boilingPoint = 100;
+        return (temp1 < freezingPoint && temp2 > boilingPoint)
+                || (temp2 < freezingPoint && temp1 > boilingPoint);
     }
 
     /**
-     * Given 2 int values, return true if either of them is in the range 10..20 inclusive.
-     * Example:
-     * in1020(12, 99) → true
-     * in1020(21, 12) → true
-     * in1020(8, 99) → false
+     * Перевіряє, чи хоча б одне число знаходиться в діапазоні 10-20.
+     *
+     * @param a перше число
+     * @param b друге число
+     * @return true, якщо хоча б одне число в діапазоні 10-20
      */
-    public boolean in1020(int a, int b) {
-        // TODO: write method body
-        return false;
+    public boolean in1020(final int a, final int b) {
+        final int minRange = 10;
+        final int maxRange = 20;
+        return (a >= minRange && a <= maxRange)
+                || (b >= minRange && b <= maxRange);
     }
 
     /**
-     * We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, return true if 1
-     * or more of them are teen.
-     * Example:
-     * hasTeen(13, 20, 10) → true
-     * hasTeen(20, 19, 10) → true
-     * hasTeen(20, 10, 13) → true
+     * Перевіряє, чи є хоча б один підліток серед трьох чисел.
+     *
+     * @param a перше число
+     * @param b друге число
+     * @param c третє число
+     * @return true, якщо хоча б одне число в діапазоні 13-19
      */
-    public boolean hasTeen(int a, int b, int c) {
-        // TODO: write method body
-        return false;
+    public boolean hasTeen(final int a, final int b, final int c) {
+        return isTeen(a) || isTeen(b) || isTeen(c);
+    }
+
+    /**
+     * Перевіряє, чи число належить до діапазону підлітків.
+     *
+     * @param n число для перевірки
+     * @return true, якщо число в діапазоні 13-19
+     */
+    private boolean isTeen(final int n) {
+        final int minTeen = 13;
+        final int maxTeen = 19;
+        return n >= minTeen && n <= maxTeen;
     }
 
     // ======== Boolean expressions ========
 
     /**
-     * The parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation.
-     * We sleep in if it is not a weekday or we're on vacation. Return true if we sleep in.
-     * Example:
-     * sleepIn(false, false) → true
-     * sleepIn(true, false) → false
-     * sleepIn(false, true) → true
+     * Перевіряє, чи можна спати.
+     *
+     * @param weekday чи будній день
+     * @param vacation чи відпустка
+     * @return true, якщо можна спати
      */
-    public boolean sleepIn(boolean weekday, boolean vacation) {
-        // TODO: write method body
-        return false;
+    public boolean sleepIn(final boolean weekday, final boolean vacation) {
+        return !weekday || vacation;
     }
 
     /**
-     * We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling.
-     * We are in trouble if they are both smiling or if neither of them is smiling. Return true if we are in trouble.
-     * Example:
-     * monkeyTrouble(true, true) → true
-     * monkeyTrouble(false, false) → true
-     * monkeyTrouble(true, false) → false
+     * Перевіряє, чи мавпи створюють проблеми.
+     *
+     * @param aSmile чи посміхається перша мавпа
+     * @param bSmile чи посміхається друга мавпа
+     * @return true, якщо мавпи створюють проблеми
      */
-    public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-        // TODO: write method body
-        return false;
+    public boolean monkeyTrouble(final boolean aSmile, final boolean bSmile) {
+        return aSmile == bSmile;
     }
 
     /**
-     * Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative"
-     * is true, then return true only if both are negative.
-     * Example:
-     * posNeg(1, -1, false) → true
-     * posNeg(-1, 1, false) → true
-     * posNeg(-4, -5, true) → true
+     * Перевіряє умови для позитивних/негативних чисел.
+     *
+     * @param a перше число
+     * @param b друге число
+     * @param negative чи мають обидва числа бути негативними
+     * @return результат перевірки
      */
-    public boolean posNeg(int a, int b, boolean negative) {
-        // TODO: write method body
-        return false;
+    public boolean posNeg(final int a, final int b, final boolean negative) {
+        if (negative) {
+            return a < 0 && b < 0;
+        } else {
+            return (a < 0 && b > 0) || (a > 0 && b < 0);
+        }
     }
 
     // ======== Loops and Arrays ========
 
     /**
-     * Given an array of ints, return the number of 9's in the array.
-     * Example:
-     * arrayCount9([1, 2, 9]) → 1
-     * arrayCount9([1, 9, 9]) → 2
-     * arrayCount9([1, 9, 9, 3, 9]) → 3
+     * Рахує кількість дев'яток у масиві.
+     *
+     * @param nums масив чисел
+     * @return кількість дев'яток
      */
-    public int arrayCount9(int[] nums) {
-        // TODO: write method body
-        return 0;
+    public int arrayCount9(final int[] nums) {
+        int count = 0;
+        final int targetNumber = 9;
+        for (int n : nums) {
+            if (n == targetNumber) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
-     * Given an array of ints, return true if one of the first 4 elements in the array is a 9.
-     * The array length may be less than 4.
-     * Example:
-     * arrayFront9([1, 2, 9, 3, 4]) → true
-     * arrayFront9([1, 2, 3, 4, 9]) → false
-     * arrayFront9([1, 2, 3, 4, 5]) → false
+     * Перевіряє, чи є дев'ятка в перших чотирьох елементах масиву.
+     *
+     * @param nums масив чисел
+     * @return true, якщо є дев'ятка в перших чотирьох елементах
      */
-    public boolean arrayFront9(int[] nums) {
-        // TODO: write method body
+    public boolean arrayFront9(final int[] nums) {
+        final int maxIndex = 4;
+        final int targetNumber = 9;
+        final int end = Math.min(nums.length, maxIndex);
+        for (int i = 0; i < end; i++) {
+            if (nums[i] == targetNumber) {
+                return true;
+            }
+        }
         return false;
     }
 
     /**
-     * Given an array of ints, return true if the sequence of numbers 1, 2, 3 appears in the array somewhere.
-     * Example:
-     * array123([1, 1, 2, 3, 1]) → true
-     * array123([1, 1, 2, 4, 1]) → false
-     * array123([1, 1, 2, 1, 2, 3]) → true
+     * Перевіряє, чи містить масив послідовність 1, 2, 3.
+     *
+     * @param nums масив чисел
+     * @return true, якщо містить послідовність 1, 2, 3
      */
-    public boolean array123(int[] nums) {
-        // TODO: write method body
+    public boolean array123(final int[] nums) {
+        final int sequenceLength = 3;
+        for (int i = 0; i < nums.length - (sequenceLength - 1); i++) {
+            final int firstNumber = 1;
+            final int secondNumber = 2;
+            final int thirdNumber = 3;
+            if (nums[i] == firstNumber
+                    && nums[i + 1] == secondNumber
+                    && nums[i + 2] == thirdNumber) {
+                return true;
+            }
+        }
         return false;
     }
 
     // ======== Strings ========
 
     /**
-     * Given a string name, e.g. "Bob", return a greeting of the form "Hello Bob!".
-     * Example:
-     * helloName("Bob") → "Hello Bob!"
-     * helloName("Alice") → "Hello Alice!"
-     * helloName("X") → "Hello X!"
+     * Формує привітання з іменем.
+     *
+     * @param name ім'я
+     * @return привітання
      */
-    public String helloName(String name) {
-        // TODO: write method body
-        return null;
+    public String helloName(final String name) {
+        return "Hello " + name + "!";
     }
 
     /**
-     * Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding"
-     * yields "codign".
-     * Example:
-     * lastTwo("coding") → "codign"
-     * lastTwo("cat") → "cta"
-     * lastTwo("ab") → "ba"
+     * Міняє місцями два останні символи рядка.
+     *
+     * @param str вхідний рядок
+     * @return рядок з переставленими останніми символами
      */
-    public String lastTwo(String str) {
-        // TODO: write method body
-        return null;
+    public String lastTwo(final String str) {
+        if (str.length() < 2) {
+            return str;
+        }
+        return str.substring(0, str.length() - 2)
+                + str.charAt(str.length() - 1)
+                + str.charAt(str.length() - 2);
     }
 
     /**
-     * Given a string of even length, return a string made of the middle two chars, so the string "string" yields "ri".
-     * The string length will be at least 2.
-     * middleTwo("string") → "ri"
-     * middleTwo("code") → "od"
-     * middleTwo("Practice") → "ct"
+     * Повертає два середні символи рядка.
+     *
+     * @param str вхідний рядок
+     * @return два середні символи
      */
-    public String middleTwo(String str) {
-        // TODO: write method body
-        return null;
+    public String middleTwo(final String str) {
+        final int mid = str.length() / 2;
+        return str.substring(mid - 1, mid + 1);
     }
-
 
 }
